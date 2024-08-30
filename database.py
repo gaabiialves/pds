@@ -5,15 +5,15 @@ from dotenv import load_dotenv
 import os
 load_dotenv() 
 
-user = "postgres"
-password = "senha"
-database = "pds"
-host = "localhost"
+# user = "postgres"
+# password = "senha"
+# database = "pds"
+# host = "localhost"
 
-# user = os.getenv("USER")
-# password = os.getenv("PASSWORD")
-# host = os.getenv("HOST")
-# database = os.getenv("DATABASE")
+user = os.getenv("USER")
+password = os.getenv("PASSWORD")
+host = os.getenv("HOST")
+database = os.getenv("DATABASE")
 
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}/{database}"
