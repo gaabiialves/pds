@@ -11,9 +11,10 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: senha
-          POSTGRES_DB: pds
+          POSTGRES_USER: ${{ secrets.USUARIO_DB }}
+          POSTGRES_PASSWORD: ${{ secrets.SENHA_DB }}
+          POSTGRES_DB: ${{ secrets.NOME_DB }}
+          POSTGRES_HOSTNAME: ${{ secrets.HOST_DB }}
         ports:
           - 5432:5432
  
@@ -37,5 +38,5 @@ jobs:
  
     - name: Run pytest
       env:
-        DATABASE_URL: postgresql://postgres:senha@localhost:5432/pds
+        DATABASE_URL: postgresql://${{ secrets.USUARIO_DB }}:${{ secrets.SENHA_DB }}@${{ secrets.HOST_DB }}:5432/${{ secrets.NOME_DB }}
       run: pytest teste.py
