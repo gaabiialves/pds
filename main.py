@@ -22,7 +22,7 @@ def read_root():
     secret_key = os.environ.get("SECRET_KEY")
     return {"Hello": "lalalala"}
 
-@app.post("/criar", status_code=status.HTTP_200_CREATED)
+@app.post("/criar", status_code=status.HTTP_201_CREATED)
 def criar_valores(nova_mensagem: classes.Mensagem, db: Session = Depends(get_db)):
     mensagem_criada = model.Model_Mensagem(**nova_mensagem.model_dump())
     db.add(mensagem_criada)
